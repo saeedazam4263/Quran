@@ -11,14 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install XcodeGen
-        run: brew install xcodegen
+      - name: Install tools
+        run: brew install xcodegen xcbeautify
 
       - name: Generate Xcode project
         run: xcodegen generate
 
       - name: Build unsigned app
         run: |
+          set -o pipefail
           xcodebuild \
             -project QuranWidgetApp.xcodeproj \
             -scheme QuranWidgetApp \
@@ -27,7 +28,7 @@ jobs:
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            build
+            build | xcbeautify
 
       - name: Package IPA
         run: |
