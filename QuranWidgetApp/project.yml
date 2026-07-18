@@ -1,0 +1,51 @@
+name: QuranWidgetApp
+options:
+  bundleIdPrefix: com.yourname.quranwidget
+  deploymentTarget:
+    iOS: "16.0"
+
+targets:
+  QuranWidgetApp:
+    type: application
+    platform: iOS
+    sources: [App, Shared]
+    info:
+      path: App/Info.plist
+    entitlements:
+      path: App/QuranWidgetApp.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.yourname.quranwidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yourname.quranwidget
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+    dependencies:
+      - target: QuranWidgetExtension
+        embed: true
+
+  QuranWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources: [Widget, Shared]
+    info:
+      path: Widget/Info.plist
+    entitlements:
+      path: Widget/QuranWidgetExtension.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.yourname.quranwidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yourname.quranwidget.widget
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
