@@ -25,6 +25,7 @@ targets:
         SWIFT_VERSION: "5.0"
         CODE_SIGNING_ALLOWED: NO
         CODE_SIGNING_REQUIRED: NO
+        GENERATE_INFOPLIST_FILE: NO
     dependencies:
       - target: QuranWidgetExtension
         embed: true
@@ -49,3 +50,4 @@ targets:
         SWIFT_VERSION: "5.0"
         CODE_SIGNING_ALLOWED: NO
         CODE_SIGNING_REQUIRED: NO
+        GENERATE_INFOPLIST_FILE: NO
